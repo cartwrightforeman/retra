@@ -1,5 +1,6 @@
 source 'https://rubygems.org/'
 
+gem 'foundation-rails'
 gem 'jquery-rails'
 gem 'listen'
 gem 'pg', '~> 0.15'
