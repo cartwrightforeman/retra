@@ -1,0 +1,17 @@
+.top-bar {
+  /*background-color: #F9F9F9;*/
+}
+// $include-html-top-bar-classes: $include-html-classes;
+// $topbar-link-color: $black;
+
+.title {
+  color: black;
+}
+
+.profile-photo {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-right: 5px;
+}
