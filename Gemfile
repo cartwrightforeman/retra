@@ -11,8 +11,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
-  gem 'mailcatcher'
   gem 'listen', '~> 3.0.5'
+  gem 'mailcatcher'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -21,9 +21,9 @@ group :development, :test do
   gem 'capybara'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'rubocop', '~> 0.39.0'
-  gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
 end

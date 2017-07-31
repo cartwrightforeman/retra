@@ -13,7 +13,6 @@ class ListShowContainer extends Component {
   }
 
   componentDidMount(){
-    debugger;
     fetch(`/api/v1/lists/1/posts/.json`)
     .then(response => {
       return response.json();
@@ -48,7 +47,7 @@ class ListShowContainer extends Component {
   handleDelete(id){
     fetch(`/api/v1/lists/1/posts/${id}`, {
       method: 'DELETE',
-      credentials: 'same-origin',
+      credentials: 'same-origin'
     })
     .then(response => {
       if (response.ok) {

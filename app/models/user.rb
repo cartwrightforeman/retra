@@ -14,4 +14,4 @@ class User < ApplicationRecord
   end
 end
 
-#possible dependent destroy for new boards
+# possible dependent destroy for new boards
