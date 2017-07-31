@@ -1,5 +1,5 @@
 class List < ApplicationRecord
-  belongs_to :user
+  belongs_to :meeting
   has_many :posts
 
   validates :user, presence: true

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :boards
   has_many :lists, dependent: :destroy
   has_many :posts, through: :lists, dependent: :destroy
 
@@ -12,3 +13,5 @@ class User < ApplicationRecord
     end
   end
 end
+
+#possible dependent destroy for new boards
