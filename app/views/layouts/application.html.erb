@@ -15,7 +15,7 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="/">Retra</a></h1>
+          <h1 class='this'><a href="/">Retra</a></h1>
         </li>
       </ul>
 
@@ -27,8 +27,16 @@
             <ul class="dropdown">
               <li><a href="#">About</a></li>
               <li class="active"><a href="#">Settings</a></li>
+              <% if current_user %>
+                <li><%= link_to "Sign Out", "/signout" %></li>
+              <% end %>
             </ul>
           </li>
+          <% if current_user %>
+            <img class="profile-photo" src="<%= "#{current_user.image}" %>"/>
+          <% else %>
+            <li><%= link_to "Sign In", "/auth/github" %></li>
+          <% end %>
         </ul>
       </section>
     </nav>
