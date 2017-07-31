@@ -1,11 +1,11 @@
 import React from 'react';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
-import ListContainer from '../src/containers/ListContainer'
+import ListShowContainer from '../src/containers/ListShowContainer'
 
 const App = props => {
   return(
     <Router history={browserHistory}>
-      <Route path='/' component={ListContainer}/>
+      <Route path='/' component={ListShowContainer}/>
     </Router>
   )
 };

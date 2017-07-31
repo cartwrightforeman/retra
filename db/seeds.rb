@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+lists = ["Happy", "Meh", "Sad", "Discussion", "Action"]
+
+# to seed first create a user and then use first user as seed
+lists.each do |list_name|
+  List.find_or_create_by!("title": list_name, "user_id": User.find_by(name: "Cartwright Foreman").id)
+end
