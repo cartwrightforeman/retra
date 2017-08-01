@@ -1,22 +1,50 @@
-// .top-bar {
-//   background-color: #F9F9F9;
-// }
+body {
+  background-color: #EEEEEE;
+}
+
+.top-bar {
+  background-color: #F9F9F9;
+}
 // // $include-html-top-bar-classes: $include-html-classes;
 // // $topbar-link-color: $black;
 //
-.title {
-  color: white;
+
+.has-dropdown a {
+  background-color: red;
+  color: red;
 }
 
 .top-bar .name h1 a {
-  color: white;
+  color: black;
+  font-size: 28px;
 }
 
-.Happy {
-  margin: none;
-  padding: none;
+.list {
+  background-color: #F9F9F9;
+  border-top: 5px solid red;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  // margin: 10px;
 }
 
+.happy {
+  border-top: 5px solid red;
+}
+
+.meh {
+  border-top: 5px solid yellow;
+}
+
+.sad {
+  border-top: 5px solid green;
+}
+
+.action {
+  border-top: 5px solid blue;
+}
+
+.discussion {
+  border-top: 5px solid orange;
+}
 
 .profile-photo {
   height: 35px;

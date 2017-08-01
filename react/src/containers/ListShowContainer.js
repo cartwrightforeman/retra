@@ -13,7 +13,7 @@ class ListShowContainer extends Component {
   }
 
   componentDidMount(){
-    fetch(`/api/v1/lists/1/posts/.json`)
+    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/.json`)
     .then(response => {
       return response.json();
     })
@@ -23,7 +23,7 @@ class ListShowContainer extends Component {
   }
 
   addNewPost(formPayload){
-    fetch(`/api/v1/lists/1/posts/`, {
+    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/`, {
       method: 'POST',
       credentials: 'same-origin',
       body: JSON.stringify(formPayload)
@@ -45,7 +45,7 @@ class ListShowContainer extends Component {
   }
 
   handleDelete(id){
-    fetch(`/api/v1/lists/1/posts/${id}`, {
+    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
     })
@@ -81,6 +81,7 @@ class ListShowContainer extends Component {
     })
     return(
       <div>
+        <h1>{this.props.title}</h1>
         {posts}
         <ListFormContainer
           addNewPost = {this.addNewPost}
