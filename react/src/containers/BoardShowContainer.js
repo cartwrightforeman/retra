@@ -10,6 +10,7 @@ class BoardShowContainer extends Component {
   }
 
   render() {
+    
     return(
       <div>
         <div className="row collapse small-12">

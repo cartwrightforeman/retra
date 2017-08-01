@@ -69,7 +69,7 @@ class ListFormContainer extends Component {
     return(
       <div>
         {errors}
-        <form className="new-post-form callout small-8 small-centered column" onSubmit={this.handleFormSubmit}>
+        <form className="new-post-form collapse small-8 small-centered column" onSubmit={this.handleFormSubmit}>
           <h8>Add Post:</h8>
           <BodyField
             content={this.state.body}

@@ -6,14 +6,14 @@ class ListShowContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      posts: []
+      posts: ['']
     }
     this.addNewPost = this.addNewPost.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount(){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/.json`)
+    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts.json`)
     .then(response => {
       return response.json();
     })
@@ -23,13 +23,17 @@ class ListShowContainer extends Component {
   }
 
   addNewPost(formPayload){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/`, {
+    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts`, {
       method: 'POST',
       credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formPayload)
     })
     .then(response => {
       if (response.ok) {
+        console.log('response is good')
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`;
@@ -67,8 +71,7 @@ class ListShowContainer extends Component {
   }
 
   render(){
-
-    let posts = this.state.posts.map((post, index) =>{
+    let posts = this.state.posts.map((post, index) => {
 
       return(
         <PostTile
@@ -79,10 +82,13 @@ class ListShowContainer extends Component {
         />
       )
     })
+
     return(
       <div>
         <h1>{this.props.title}</h1>
-        {posts}
+        <div className="row">
+          {posts}
+        </div>
         <ListFormContainer
           addNewPost = {this.addNewPost}
         />
