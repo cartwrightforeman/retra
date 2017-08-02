@@ -1,7 +1,8 @@
 {
-  "name": "bare-rails-react",
+  "name": "retra",
+  "private": true,
   "version": "1.0.0",
-  "description": "Bare Rails and React app",
+  "description": "Scrum meeting facilitator",
   "main": "webpack.config.js",
   "engines": {
     "node": "7.9.0"

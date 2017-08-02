@@ -14,6 +14,7 @@ class Api::V1::PostsController < ApplicationController
 
   def update
     #post
+    binding.pry
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @post = @list.posts.find(params[:id])

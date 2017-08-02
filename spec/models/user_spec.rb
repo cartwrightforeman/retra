@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many :boards }
+
+  it { should have_valid(:uid).when('213245') }
+  it { should have_valid(:name).when('Github Provides') }
+  it { should have_valid(:email).when('Github@provides.com') }
+  it { should have_valid(:image).when('githubprovidestheimage') }
 end

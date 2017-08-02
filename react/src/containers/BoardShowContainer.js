@@ -5,12 +5,21 @@ class BoardShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      lists: []
     }
   }
 
   render() {
-    
+
+    let lists = this.state.lists.map((list, index) => {
+      return(
+        <ListShowContainer
+          title = {"Happy"}
+          listID = {1}
+        />
+      )
+    })
+
     return(
       <div>
         <div className="row collapse small-12">
