@@ -9,8 +9,8 @@
 lists = ["Happy", "Meh", "Sad", "Discussion", "Action"]
 
 # if board requires user presence then use first user as seed
-# Board.find_or_create_by("user_id": User.find_by(name: "Cartwright Foreman").id)
-Board.create()
+Board.find_or_create_by("user_id": User.find_by(name: "Cartwright Foreman").id)
+# Board.create()
 
 lists.each do |list_name|
   List.find_or_create_by!("title": list_name, "board_id": Board.find_by(id: 1).id)
