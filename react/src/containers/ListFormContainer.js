@@ -51,11 +51,6 @@ class ListFormContainer extends Component {
     }}
     this.props.addNewPost(formPayload);
     this.handleClearForm(event);
-    // let reload = 2
-    // if (reload % 2 === 0) {
-    //   reload += 1
-    //   location.reload()
-    // }
   }
 
   render() {
@@ -86,9 +81,5 @@ class ListFormContainer extends Component {
     )
   }
 }
-
-// <input
-//   type="text"
-// />
 
 export default ListFormContainer;

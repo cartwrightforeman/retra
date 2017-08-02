@@ -8,9 +8,16 @@ class Api::V1::PostsController < ApplicationController
     render json: {posts: @posts}, adapter: :json
   end
 
-  def new
-    binding.pry
-    @post = Post.new
+  def edit
+    #get, form
+  end
+
+  def update
+    #post
+    @board = Board.find(params[:board_id])
+    @list = @board.lists.find(params[:list_id])
+    @post = @list.posts.find(params[:id])
+
   end
 
   def create
@@ -21,5 +28,16 @@ class Api::V1::PostsController < ApplicationController
     if @post.save
       render json: data["post"]
     end
+  end
+
+  def destroy
+    @board = Board.find(params[:board_id])
+    @list = @board.lists.find(params[:list_id])
+    @post = @list.posts.find(params[:id])
+    # data = JSON.parse(request.body.read)
+    @post.delete
+    # if @post.delete
+    #   render json: data["post"]
+    # end
   end
 end
