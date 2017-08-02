@@ -84,8 +84,8 @@ class ListShowContainer extends Component {
 
     return(
       <div>
-        <h1>{this.props.title}</h1>
-        <div className="row">
+        <h1 className="header">{this.props.title}</h1>
+        <div className="row post-tile">
           {posts}
         </div>
         <ListFormContainer
