@@ -51,15 +51,14 @@ class ListFormContainer extends Component {
     }}
     this.props.addNewPost(formPayload);
     this.handleClearForm(event);
-    let reload = 2
-    if (reload % 2 === 0) {
-      reload += 1
-      location.reload()
-    }
+    // let reload = 2
+    // if (reload % 2 === 0) {
+    //   reload += 1
+    //   location.reload()
+    // }
   }
 
   render() {
-
     let errors;
     if (this.state.error) {
       errors = this.state.error.map((error) => {

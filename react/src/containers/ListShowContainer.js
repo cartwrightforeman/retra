@@ -33,7 +33,6 @@ class ListShowContainer extends Component {
     })
     .then(response => {
       if (response.ok) {
-        console.log('response is good')
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`;
