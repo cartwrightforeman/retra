@@ -9,7 +9,7 @@ RSpec.describe Api::V1::ListsController, type: :controller do
 
   describe "GET#index" do
     it "should return a list of all lists" do
-      get :index, params:{board_id:1}
+      get :index, params:{ board_id:1 }
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200

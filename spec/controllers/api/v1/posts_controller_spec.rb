@@ -5,12 +5,12 @@ RSpec.describe Api::V1::ListsController, type: :controller do
     @user = FactoryGirl.create(:user, name: 'Super User', uid: '12345', provider: "GitHub", email: 'super@user.com')
     @board = FactoryGirl.create(:board, user: @user, id: '1')
     @list = FactoryGirl.create(:list, title: 'title', board: @board)
-    create(:post,  list: @list, id: '1')
+    create(:post, list: @list, id: '1')
   end
 
   describe "GET#index" do
     it "should return a list of all lists" do
-      get :index, params:{board_id:1, list_id:1}
+      get :index, params:{ board_id:1, list_id:1 }
       returned_json = JSON.parse(response.body)
 
       expect(response.status).to eq 200
