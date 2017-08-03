@@ -1,21 +1,21 @@
 import React from 'react';
-import BodyField from '../../src/components/BodyField'
+import TextField from '../../src/components/TextField'
 
-describe('BodyField', () => {
+describe('TextField', () => {
   let label,
       wrapper;
 
   beforeEach(() => {
     wrapper = mount(
-      <BodyField
+      <TextField
         value="awesome"
         label="label"
       />
     );
   });
 
-  it('should render a BodyField tag', () => {
-    expect(wrapper.find('BodyField'))
+  it('should render a TextField tag', () => {
+    expect(wrapper.find('TextField'))
   });
 
   it('should render the label for user to see', () => {

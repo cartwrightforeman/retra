@@ -1,5 +1,5 @@
 import ListFormContainer from '../../src/containers/ListFormContainer';
-import BodyField from '../../src/components/BodyField'
+import TextField from '../../src/components/TextField'
 
 describe('ListFormContainer', () => {
   let wrapper;
@@ -21,7 +21,7 @@ describe('ListFormContainer', () => {
     expect(wrapper.find('h8').text()).toBe ("Add Post:");
   });
 
-  it('should render a BodyField tag', () => {
-    expect(wrapper.find(BodyField)).toBePresent();
+  it('should render a TextField tag', () => {
+    expect(wrapper.find(TextField)).toBePresent();
   });
 });

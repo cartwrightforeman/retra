@@ -7,7 +7,7 @@ class BoardShowContainer extends Component {
     this.state = {
       lists: []
     }
-    this.renderText =this.renderText.bind(this)
+    // this.renderText =this.renderText.bind(this)
   }
 
   // renderText() {
