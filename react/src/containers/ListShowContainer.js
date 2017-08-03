@@ -10,10 +10,11 @@ class ListShowContainer extends Component {
     }
     this.addNewPost = this.addNewPost.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.updatePost = this.updatePost.bind(this)
   }
 
   componentDidMount(){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts.json`)
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts.json`)
     .then(response => {
       return response.json();
     })
@@ -23,7 +24,7 @@ class ListShowContainer extends Component {
   }
 
   addNewPost(formPayload){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts`, {
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts`, {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -44,11 +45,12 @@ class ListShowContainer extends Component {
     .then(responseData => {
       this.setState({ posts: [...this.state.posts, responseData] })
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch post: ${error.message}`));
   }
 
   handleDelete(id){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/${id}`, {
+    debugger;
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
     })
@@ -66,7 +68,32 @@ class ListShowContainer extends Component {
         throw(error);
       }
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch delete: ${error.message}`));
+  }
+
+  updatePost(formPayload, id){
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts/${id}`, {
+      method: 'PATCH',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      this.setState({ posts: [...this.state.posts, responseData] })
+    })
+    .catch(error => console.error(`Error in fetch patch: ${error.message}`));
   }
 
   render(){
@@ -78,6 +105,7 @@ class ListShowContainer extends Component {
           postID = {post.id}
           body = {post.body}
           handleDelete = {this.handleDelete}
+          updatePost = {this.updatePost}
         />
       )
     })

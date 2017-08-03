@@ -8,15 +8,20 @@ class Api::V1::PostsController < ApplicationController
     render json: { posts: @posts }, adapter: :json
   end
 
-  def edit
-    # get, form
-  end
-
   def update
-    # post
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @post = @list.posts.find(params[:id])
+    post_hash = JSON.parse(request.body.read)["post"]
+    unless post_hash.has_key? "body"
+      return render json: { errors: 'Must have input!' }, status: 422
+    end
+    @post.assign_attributes({
+      body: post_hash["body"]
+    })
+    if @post.save
+      render json: { posts: @post }, adapter: :json
+    end
   end
 
   def create

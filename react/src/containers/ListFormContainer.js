@@ -5,7 +5,6 @@ class ListFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: [],
       body: ''
     }
     this.handleChange = this.handleChange.bind(this)

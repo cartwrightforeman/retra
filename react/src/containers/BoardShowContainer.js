@@ -7,34 +7,25 @@ class BoardShowContainer extends Component {
     this.state = {
       lists: []
     }
-    // this.renderText =this.renderText.bind(this)
   }
-
-  // renderText() {
-  //   document.getElementById('thebox').value='Ta-da!'
-  //   // pass down value and elementid as props and fill in that way
-  // }
-  // <input type="text" id="thebox" value=""></input>
-  // <input type="button" value="Make code appear in text box!" onClick={this.renderText}></input>
 
   render() {
     let lists = this.state.lists.map((list, index) => {
       return(
         <ListShowContainer
           title = {"Happy"}
+          boardID = {1}
           listID = {1}
         />
       )
     })
     return(
       <div>
-
-
-
         <div className="row collapse small-12">
           <div className="happy list collapse small-11 small-centered medium-8 medium-centered large-uncentered large-3 column">
             <ListShowContainer
               title = {"Happy"}
+              boardID = {1}
               listID = {1}
             />
           </div>
@@ -42,6 +33,7 @@ class BoardShowContainer extends Component {
 
             <ListShowContainer
               title = {"Meh"}
+              boardID = {1}
               listID = {2}
             />
           </div>
@@ -49,6 +41,7 @@ class BoardShowContainer extends Component {
           <div className="sad list small-11 small-centered medium-8 medium-centered large-uncentered large-3 column">
             <ListShowContainer
               title = {"Sad"}
+              boardID = {1}
               listID = {3}
             />
           </div>
@@ -57,12 +50,14 @@ class BoardShowContainer extends Component {
             <div className="action list">
               <ListShowContainer
                 title = {"Action"}
+                boardID = {1}
                 listID = {4}
               />
             </div>
             <div className="discussion list">
               <ListShowContainer
                 title = {"Discussion"}
+                boardID = {1}
                 listID = {5}
               />
             </div>
