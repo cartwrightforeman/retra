@@ -5,20 +5,18 @@ class Api::V1::PostsController < ApplicationController
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @posts = @list.posts
-    render json: {posts: @posts}, adapter: :json
+    render json: { posts: @posts }, adapter: :json
   end
 
   def edit
-    #get, form
+    # get, form
   end
 
   def update
-    #post
-    binding.pry
+    # post
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @post = @list.posts.find(params[:id])
-
   end
 
   def create
@@ -27,7 +25,7 @@ class Api::V1::PostsController < ApplicationController
     data = JSON.parse(request.body.read)
     @post = @list.posts.new(data['post'])
     if @post.save
-      render json: data["post"]
+      render json: @post
     end
   end
 
@@ -35,10 +33,10 @@ class Api::V1::PostsController < ApplicationController
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @post = @list.posts.find(params[:id])
-    # data = JSON.parse(request.body.read)
     @post.delete
-    # if @post.delete
-    #   render json: data["post"]
-    # end
+    @list = @board.lists.find(params[:list_id])
+    if @post.delete
+      render json: @list
+    end
   end
 end

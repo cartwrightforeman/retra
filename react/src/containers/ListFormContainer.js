@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BodyField from '../components/BodyField'
+import TextField from '../components/TextField'
 
 class ListFormContainer extends Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class ListFormContainer extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.validateEmptyFields = this.validateEmptyFields.bind(this)
   }
 
   handleChange(event) {
@@ -19,22 +18,6 @@ class ListFormContainer extends Component {
     const value = event.target.value
 
     this.setState({ [name]: value })
-    this.validateEmptyFields(name, value)
-  }
-
-  validateEmptyFields(name, field) {
-    let message = `Hey you left ${name} blank! `;
-    let errorArray = [...this.state.error, message];
-    if (field === null || field === "" || field === " ") {
-      this.setState({error: errorArray})
-    } else {
-      if (errorArray.includes(message)) {
-        let newError = this.state.error.filter((error) => {
-          return error !== message
-        })
-        this.setState({ error: newError })
-      }
-    }
   }
 
   handleClearForm(event) {
@@ -54,28 +37,20 @@ class ListFormContainer extends Component {
   }
 
   render() {
-    let errors;
-    if (this.state.error) {
-      errors = this.state.error.map((error) => {
-        return ( <p>{error}</p> )
-      })
-    }
     return(
       <div>
-        {errors}
-        <form className="new-post-form collapse small-8 small-centered column" onSubmit={this.handleFormSubmit}>
+        <form className="new-post-form collapse small-12 small-centered column" autoComplete="off" onSubmit={this.handleFormSubmit}>
           <h8>Add Post:</h8>
-          <BodyField
+          <TextField
             content={this.state.body}
             name="body"
             handleChange={this.handleChange}
           />
 
-          <div className="button-group">
-            <button className="button" onClick={this.handleClearForm}>Clear</button>
-            &nbsp; &nbsp;
-            <input className="button" type="submit" value="Submit" />
-          </div>
+          <ul className="button-group centered">
+            <li><input className="button centered less" type="submit" value="Submit" /></li>
+            <li><button className="button centered less" onClick={this.handleClearForm}>Clear</button></li>
+          </ul>
         </form>
       </div>
     )
