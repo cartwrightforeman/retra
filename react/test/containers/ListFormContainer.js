@@ -9,10 +9,6 @@ describe('ListFormContainer', () => {
     );
   });
 
-  it('should have state error', () => {
-    expect(wrapper).toHaveState('error');
-  });
-
   it('should have state body', () => {
     expect(wrapper).toHaveState('body');
   });
