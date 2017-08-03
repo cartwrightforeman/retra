@@ -7,10 +7,17 @@ class BoardShowContainer extends Component {
     this.state = {
       lists: []
     }
+    this.renderText =this.renderText.bind(this)
   }
 
-  render() {
+  // renderText() {
+  //   document.getElementById('thebox').value='Ta-da!'
+  //   // pass down value and elementid as props and fill in that way
+  // }
+  // <input type="text" id="thebox" value=""></input>
+  // <input type="button" value="Make code appear in text box!" onClick={this.renderText}></input>
 
+  render() {
     let lists = this.state.lists.map((list, index) => {
       return(
         <ListShowContainer
@@ -19,9 +26,11 @@ class BoardShowContainer extends Component {
         />
       )
     })
-
     return(
       <div>
+
+
+
         <div className="row collapse small-12">
           <div className="happy list collapse small-11 small-centered medium-8 medium-centered large-uncentered large-3 column">
             <ListShowContainer
