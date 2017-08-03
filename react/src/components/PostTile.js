@@ -65,7 +65,7 @@ class PostTile extends Component {
       post = (
         <span className=" small-12 columns post panel">
           <span className="posty">
-            <i className="fa fa-times" onClick={this.props.handleDelete.bind(this, this.props.postID)} aria-hidden="true"></i>
+            <i className="fa fa-times" onClick={() => this.props.handleDelete(this.props.postID)} aria-hidden="true"></i>
             &nbsp;<br></br>
             <i className="fa fa-pencil-square-o" onClick={this.toggleEdit} aria-hidden="true"></i>
           </span>

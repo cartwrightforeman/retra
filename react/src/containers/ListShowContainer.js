@@ -49,24 +49,23 @@ class ListShowContainer extends Component {
   }
 
   handleDelete(id){
-    debugger;
     fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
     })
     .then(response => {
       if (response.ok) {
-        let reload = 2
-        if (reload % 2 === 0) {
-          reload += 1
-          location.reload()
-        }
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`;
         let error = new Error(errorMessage);
         throw(error);
       }
+    })
+    .then(res => res.json())
+    // when working with response, do .json
+    .then(json => {
+      this.setState({ posts: json })
     })
     .catch(error => console.error(`Error in fetch delete: ${error.message}`));
   }
@@ -91,7 +90,11 @@ class ListShowContainer extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-      this.setState({ posts: [...this.state.posts, responseData] })
+      console.log(responseData)
+      // let newPosts = [...this.state.posts, responseData.posts]
+      // debugger;
+      // newPosts.sort()
+      this.setState({ posts: [...this.state.posts, responseData.posts] })
     })
     .catch(error => console.error(`Error in fetch patch: ${error.message}`));
   }

@@ -41,7 +41,7 @@ class Api::V1::PostsController < ApplicationController
     @post.delete
     @list = @board.lists.find(params[:list_id])
     if @post.delete
-      render json: @list
+      render json: @list.posts
     end
   end
 end
