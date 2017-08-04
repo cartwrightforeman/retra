@@ -93,6 +93,7 @@ class ListShowContainer extends Component {
       var newArr = this.state.posts.filter(post => {
         return post.id !== responseData.posts.id
       })
+      // newArr.sort() by rank when implemented
       this.setState({ posts: [...newArr, responseData.posts] })
     })
     .catch(error => console.error(`Error in fetch patch: ${error.message}`))
