@@ -45,8 +45,6 @@ class PostTile extends Component {
   }
 
   render() {
-    console.log('yolo')
-    console.log(this.state.body)
     let post;
     if (this.state.editing) {
       post = (
