@@ -90,13 +90,12 @@ class ListShowContainer extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-      console.log(responseData)
-      // let newPosts = [...this.state.posts, responseData.posts]
-      // debugger;
-      // newPosts.sort()
-      this.setState({ posts: [...this.state.posts, responseData.posts] })
+      var newArr = this.state.posts.filter(post => {
+        return post.id !== responseData.posts.id
+      })
+      this.setState({ posts: [...newArr, responseData.posts] })
     })
-    .catch(error => console.error(`Error in fetch patch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch patch: ${error.message}`))
   }
 
   render(){

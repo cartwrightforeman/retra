@@ -30,7 +30,6 @@ class PostTile extends Component {
   }
 
   handleFormSubmit(event) {
-    console.log('handle form submit')
     event.preventDefault();
     let formPayload = {post: {
       body: this.state.body
