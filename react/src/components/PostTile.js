@@ -47,7 +47,7 @@ class PostTile extends Component {
     let post;
     if (this.state.editing) {
       post = (
-        <form onSubmit={this.handleFormSubmit} autoComplete="off">
+        <form onSubmit={this.handleFormSubmit} autoComplete="off" >
           <label onChange={this.handleChange}>
             <input
               name='body'
@@ -60,13 +60,12 @@ class PostTile extends Component {
       )
     } else {
       post = (
-        <span className=" small-12 columns post panel">
+        <span className="small-12 columns post panel">
           <span className="posty">
             <i className="fa fa-times" onClick={() => this.props.handleDelete(this.props.postID)} aria-hidden="true"></i>
             &nbsp;<br></br>
-            <i className="fa fa-pencil-square-o" onClick={this.toggleEdit} aria-hidden="true"></i>
           </span>
-          <p className="post-text">{this.props.body}</p>
+          <p className="post-text" onClick={this.toggleEdit}>{this.props.body}</p>
         </span>
       )
     }

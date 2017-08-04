@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import TextField from '../components/TextField'
 
-class ListFormContainer extends Component {
+class BoardFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      body: ''
+      name: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
@@ -22,27 +22,28 @@ class ListFormContainer extends Component {
   handleClearForm(event) {
     event.preventDefault();
     this.setState({
-      body: ''
+      name: ''
     })
   }
 
   handleFormSubmit(event) {
     event.preventDefault();
-    let formPayload = {post: {
-      body: this.state.body
+    let formPayload = {board: {
+      name: this.state.name
     }}
-    this.props.addNewPost(formPayload);
+    this.props.addNewBoard(formPayload);
     this.handleClearForm(event);
   }
 
   render() {
+    console.log(this.state.name)
     return(
       <div>
         <form className="new-post-form collapse small-12 small-centered column" autoComplete="off" onSubmit={this.handleFormSubmit}>
-          <h8>Add Post:</h8>
+          <h8>New Board:</h8>
           <TextField
-            content={this.state.body}
-            name="body"
+            content={this.state.name}
+            name="name"
             handleChange={this.handleChange}
           />
           <ul className="button-group clever-padding">
@@ -53,4 +54,4 @@ class ListFormContainer extends Component {
   }
 }
 
-export default ListFormContainer;
+export default BoardFormContainer;

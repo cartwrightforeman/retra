@@ -4,6 +4,7 @@ body {
 
 .top-bar {
   background-color: #F9F9F9;
+  margin-bottom: 1em;
 }
 
 .top-bar .name h1 a {
@@ -13,9 +14,15 @@ body {
 
 .list {
   background-color: #F9F9F9;
-  border-top: 5px solid red;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 45em;
+  overflow: auto;
   // margin: 10px;
+  // padding-left: 10px
+}
+
+.mini {
+  height: 22.5em;
 }
 
 .happy {
@@ -37,6 +44,11 @@ body {
 .discussion {
   border-top: 5px solid orange;
 }
+
+// .z {
+//   color: red;
+//   position: fixed;
+// }
 
 .profile-photo {
   height: 35px;
@@ -67,4 +79,16 @@ body {
 
 .post-text {
   overflow-wrap: break-word;
+}
+
+// i.fa.fa-times {
+//   color: whitesmoke;
+// }
+
+.small-12.columns.post.panel:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.small-12.columns.post.panel:hover i.fa.fa-times {
+  color: red;
 }

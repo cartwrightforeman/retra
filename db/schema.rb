@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170731163708) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "user_id"
+    t.string  "name",    null: false
     t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
   end
 

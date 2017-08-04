@@ -29,6 +29,7 @@ class Api::V1::PostsController < ApplicationController
     @list = @board.lists.find(params[:list_id])
     data = JSON.parse(request.body.read)
     @post = @list.posts.new(data['post'])
+    binding.pry
     if @post.save
       render json: @post
     end
