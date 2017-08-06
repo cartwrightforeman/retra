@@ -2,7 +2,8 @@ class Api::V1::BoardsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: Board.all, adapter: :json
+    @boards = Board.where(user_id: current_user.id)
+    render json: @boards, adapter: :json
   end
 
   def show
@@ -11,12 +12,13 @@ class Api::V1::BoardsController < ApplicationController
   end
 
   def create
+
     data = JSON.parse(request.body.read)
     @board = Board.new(data['board'])
     @board.user_id = current_user.id
+    binding.pry
     if @board.save
       @board.initialize_lists(@board.id)
-      binding.pry
       render json: @board
     end
   end

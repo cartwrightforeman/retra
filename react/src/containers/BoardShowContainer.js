@@ -8,10 +8,27 @@ class BoardShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      lists: []
+      lists: [],
+      board: []
     }
-    console.log('debugger in BoardShow')
     this.addNewBoard = this.addNewBoard.bind(this)
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/boards/${this.props.params.board_id}.json`)
+    .then(response => {
+      return response.json();
+    })
+    .then(body => {
+      this.setState({ board: body.board})
+    })
+    fetch(`/api/v1/boards/${this.props.params.board_id}/lists.json`)
+    .then(response => {
+      return response.json();
+    })
+    .then(body => {
+      this.setState({ lists: body.lists })
+    })
   }
 
   addNewBoard(formPayload){
@@ -40,12 +57,15 @@ class BoardShowContainer extends Component {
   }
 
   render() {
+    let boardID = this.props.params.board_id
     let lists = this.state.lists.map((list, index) => {
       return(
         <ListShowContainer
-          title = {"Happy"}
-          boardID = {1}
-          listID = {1}
+          key = {index + 1}
+          classdame = {index + 'class'}
+          title = {list.title}
+          listID = {list.id}
+          boardID = {boardID}
         />
       )
     })
@@ -53,6 +73,7 @@ class BoardShowContainer extends Component {
     return(
       <div>
         <div className="row collapse small-12">
+        {lists}
           <div className="happy list collapse small-11 small-centered medium-8 medium-centered large-uncentered large-3 column">
             <ListShowContainer
               title = {"Happy"}

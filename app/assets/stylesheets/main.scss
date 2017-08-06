@@ -90,5 +90,6 @@ body {
 }
 
 .small-12.columns.post.panel:hover i.fa.fa-times {
-  color: red;
+  color: darkgray;
+  cursor: pointer; cursor: hand;
 }
