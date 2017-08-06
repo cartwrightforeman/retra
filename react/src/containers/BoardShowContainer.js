@@ -12,7 +12,9 @@ class BoardShowContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/boards/${this.props.params.board_id}.json`)
+    fetch(`/api/v1/boards/${this.props.params.board_id}.json`, {
+      credentials: 'same-origin'
+    })
     .then(response => {
       return response.json();
     })

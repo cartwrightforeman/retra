@@ -49,7 +49,7 @@ class PostTile extends Component {
       post = (
         <form onSubmit={this.handleFormSubmit} autoComplete="off" >
           <label onChange={this.handleChange}>
-            <input
+            <input className="edit"
               name='body'
               type='text'
               defaultValue={this.props.body}

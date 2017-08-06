@@ -39,7 +39,6 @@ class ListFormContainer extends Component {
     return(
       <div>
         <form className="new-post-form collapse small-12 small-centered column" autoComplete="off" onSubmit={this.handleFormSubmit}>
-          <h8>Add Post:</h8>
           <TextField
             content={this.state.body}
             name="body"

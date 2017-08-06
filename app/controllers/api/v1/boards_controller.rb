@@ -7,8 +7,14 @@ class Api::V1::BoardsController < ApplicationController
   end
 
   def show
+    # binding.pry
     @board = Board.find(params[:id])
-    render json: { board: @board }
+    if current_user != nil && current_user.id === @board.user_id
+      render json: { board: @board }
+    end
+    if current_user == nil
+      render json: { errors: ["Oops! This isn't yours!"] }, status: 404
+    end
   end
 
   def create

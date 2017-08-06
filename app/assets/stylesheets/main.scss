@@ -14,13 +14,15 @@ body {
 
 .list {
   background-color: #F9F9F9;
+  // border: 1px solid #EEEEEE;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 45em;
   overflow: auto;
+  margin-right: 5px;
 }
 
 .board {
-  margin: auto
+  margin: auto;
 }
 
 .mini {
@@ -28,8 +30,7 @@ body {
 }
 
 .class0 {
-  border-top: 5px solid red;
-  // margin-left: 10px;
+  border-top: 5px solid green;
 }
 
 .class1 {
@@ -37,7 +38,7 @@ body {
 }
 
 .class2 {
-  border-top: 5px solid green;
+  border-top: 5px solid red;
 }
 
 .class3 {
@@ -48,10 +49,13 @@ body {
   border-top: 5px solid orange;
 }
 
-// .z {
-//   color: red;
-//   position: fixed;
-// }
+.z {
+  // use to change headers
+}
+
+input.edit {
+  // set cursor to blink after click
+}
 
 .profile-photo {
   height: 35px;
@@ -86,6 +90,7 @@ body {
 
 // i.fa.fa-times {
 //   color: whitesmoke;
+//   use to change icon color
 // }
 
 .small-12.columns.post.panel:hover {
