@@ -36,18 +36,15 @@ class BoardFormContainer extends Component {
   }
 
   render() {
-    console.log(this.state.name)
     return(
-      <div>
-        <form className="new-post-form collapse small-12 small-centered column" autoComplete="off" onSubmit={this.handleFormSubmit}>
+      <div className="row panel" autoComplete="off" >
+        <form className="collapse small-12 small-centered column" onSubmit={this.handleFormSubmit}>
           <h8>New Board:</h8>
           <TextField
             content={this.state.name}
             name="name"
             handleChange={this.handleChange}
           />
-          <ul className="button-group clever-padding">
-          </ul>
         </form>
       </div>
     )

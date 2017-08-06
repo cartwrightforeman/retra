@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ListShowContainer from '../containers/ListShowContainer'
 import { Link } from 'react-router';
-import BoardFormContainer from '../containers/BoardFormContainer'
-// <Link to={`/new-board`}>New Board</Link>
 
 class BoardShowContainer extends Component {
   constructor(props) {
@@ -11,7 +9,6 @@ class BoardShowContainer extends Component {
       lists: [],
       board: []
     }
-    this.addNewBoard = this.addNewBoard.bind(this)
   }
 
   componentDidMount() {
@@ -29,31 +26,6 @@ class BoardShowContainer extends Component {
     .then(body => {
       this.setState({ lists: body.lists })
     })
-  }
-
-  addNewBoard(formPayload){
-    fetch(`/api/v1/boards`, {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formPayload)
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`;
-        let error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(responseData => {
-      this.setState({ posts: [...this.state.posts, responseData] })
-    })
-    .catch(error => console.error(`Error in fetch post: ${error.message}`));
   }
 
   render() {
@@ -82,9 +54,6 @@ class BoardShowContainer extends Component {
         <div className="board collapse small-11 small-centered">
           {lists}
         </div>
-        <BoardFormContainer
-          addNewBoard = {this.addNewBoard}
-        />
       </div>
     )
   }

@@ -16,7 +16,6 @@ class Api::V1::BoardsController < ApplicationController
     data = JSON.parse(request.body.read)
     @board = Board.new(data['board'])
     @board.user_id = current_user.id
-    binding.pry
     if @board.save
       @board.initialize_lists(@board.id)
       render json: @board

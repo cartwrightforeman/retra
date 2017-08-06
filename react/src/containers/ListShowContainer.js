@@ -115,7 +115,6 @@ class ListShowContainer extends Component {
 
     return(
       <div>
-      <div className="sadhaos">
         <h1 className="z">{this.props.title}</h1>
         <div className="row post-tile">
           {posts}
@@ -123,7 +122,6 @@ class ListShowContainer extends Component {
         <ListFormContainer
           addNewPost = {this.addNewPost}
         />
-      </div>
       </div>
     )
   }

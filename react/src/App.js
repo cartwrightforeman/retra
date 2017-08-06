@@ -6,8 +6,7 @@ import BoardsIndexContainer from '../src/containers/BoardsIndexContainer'
 const App = props => {
   return(
     <Router history={browserHistory}>
-      <Route path='/' component={BoardShowContainer}/>
-      <Route path='/boards' component={BoardsIndexContainer}/>
+      <Route path='/' component={BoardsIndexContainer}/>
       <Route path='/boards/:board_id' component={BoardShowContainer}/>
     </Router>
   )

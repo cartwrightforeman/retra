@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BoardTile from '../components/BoardTile'
+import BoardFormContainer from '../containers/BoardFormContainer'
 
 class BoardsIndexContainer extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class BoardsIndexContainer extends Component {
     this.state = {
       boards: []
     }
+    this.addNewBoard = this.addNewBoard.bind(this)
   }
 
   componentDidMount() {
@@ -19,6 +21,31 @@ class BoardsIndexContainer extends Component {
     .then(body => {
       this.setState({ boards: body.boards })
     })
+  }
+
+  addNewBoard(formPayload){
+    fetch(`/api/v1/boards`, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      this.setState({ boards: [...this.state.posts, responseData] })
+    })
+    .catch(error => console.error(`Error in fetch post: ${error.message}`));
   }
 
 
@@ -34,8 +61,18 @@ class BoardsIndexContainer extends Component {
     })
     return(
       <div>
-        <h1>Hi from boardsindex!</h1>
-        {boards}
+        <div className="row small-centered">
+          <h1>ALL ABOARD</h1>
+        </div>
+        <div className="row">
+          {boards}
+        </div>
+         &nbsp;
+        <div>
+        <BoardFormContainer
+          addNewBoard = {this.addNewBoard}
+        />
+        </div>
       </div>
     )
   }
