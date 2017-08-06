@@ -17,31 +17,33 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 45em;
   overflow: auto;
-  // margin: 10px;
-  // padding-left: 10px
+}
+
+.board {
+  margin: auto
 }
 
 .mini {
   height: 22.5em;
 }
 
-.happy {
+.class0 {
   border-top: 5px solid red;
 }
 
-.meh {
+.class1 {
   border-top: 5px solid yellow;
 }
 
-.sad {
+.class2 {
   border-top: 5px solid green;
 }
 
-.action {
+.class3 {
   border-top: 5px solid blue;
 }
 
-.discussion {
+.class4 {
   border-top: 5px solid orange;
 }
 

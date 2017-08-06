@@ -115,8 +115,7 @@ class ListShowContainer extends Component {
 
     return(
       <div>
-      <div className={this.props.classdame}>
-
+      <div className="sadhaos">
         <h1 className="z">{this.props.title}</h1>
         <div className="row post-tile">
           {posts}
