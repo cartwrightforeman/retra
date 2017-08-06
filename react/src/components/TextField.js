@@ -7,7 +7,7 @@ const TextField = (props) => {
         name={props.name}
         type='text'
         value={props.content}
-        placeholder= "Add Post"
+        placeholder= {props.placeholder}
       />
     </label>
   );

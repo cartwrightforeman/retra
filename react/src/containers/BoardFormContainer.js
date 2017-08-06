@@ -37,13 +37,14 @@ class BoardFormContainer extends Component {
 
   render() {
     return(
-      <div className="row panel" autoComplete="off" >
-        <form className="collapse small-12 small-centered column" onSubmit={this.handleFormSubmit}>
+      <div className="column panel">
+        <form className="collapse small-12 small-centered column" onSubmit={this.handleFormSubmit} autoComplete="off" >
           <h8>New Board:</h8>
           <TextField
             content={this.state.name}
             name="name"
             handleChange={this.handleChange}
+            placeholder= ""
           />
         </form>
       </div>

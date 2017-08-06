@@ -43,6 +43,7 @@ class ListFormContainer extends Component {
             content={this.state.body}
             name="body"
             handleChange={this.handleChange}
+            placeholder="Add Post"
           />
           <ul className="button-group clever-padding">
           </ul>

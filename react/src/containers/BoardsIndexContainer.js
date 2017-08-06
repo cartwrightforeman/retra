@@ -43,7 +43,7 @@ class BoardsIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-      this.setState({ boards: [...this.state.posts, responseData] })
+      this.setState({ boards: [...this.state.boards, responseData] })
     })
     .catch(error => console.error(`Error in fetch post: ${error.message}`));
   }
@@ -66,12 +66,11 @@ class BoardsIndexContainer extends Component {
         </div>
         <div className="row">
           {boards}
-        </div>
-         &nbsp;
-        <div>
-        <BoardFormContainer
-          addNewBoard = {this.addNewBoard}
-        />
+          &nbsp;
+
+          <BoardFormContainer
+            addNewBoard = {this.addNewBoard}
+          />
         </div>
       </div>
     )
