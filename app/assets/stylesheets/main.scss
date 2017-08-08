@@ -12,14 +12,20 @@ body {
   font-size: 28px;
 }
 
+.board .list {
+  margin-right: 0.5rem;
+  max-width: 20rem;
+}
+
 .list {
+  // background-color: red;
   background-color: #F9F9F9;
-  // border: 1px solid #EEEEEE;
+  // border: 3px solid #EEEEEE;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 45em;
   overflow: auto;
-  margin-right: 5px;
 }
+
 
 .board {
   margin: auto;
@@ -93,16 +99,15 @@ input.edit {
   margin: 5px;
 }
 
-// i.fa.fa-times {
-//   color: whitesmoke;
-//   use to change icon color
-// }
+i.fa.fa-times {
+  color: darkgray;
+}
 
 .small-12.columns.post.panel:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .small-12.columns.post.panel:hover i.fa.fa-times {
-  color: darkgray;
+  color: dimgray;
   cursor: pointer; cursor: hand;
 }
