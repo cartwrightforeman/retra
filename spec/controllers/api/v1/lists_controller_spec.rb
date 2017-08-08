@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::ListsController, type: :controller do
   before(:each) do
     @user = FactoryGirl.create(:user, name: 'Super User', uid: '12345', provider: "GitHub", email: 'super@user.com')
-    @board = FactoryGirl.create(:board, user: @user, id: '1')
+    @board = FactoryGirl.create(:board, user: @user, id: '1', name: 'firstboard')
     create(:list, board: @board, id: '1')
   end
 

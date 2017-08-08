@@ -10,10 +10,11 @@ class ListShowContainer extends Component {
     }
     this.addNewPost = this.addNewPost.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.updatePost = this.updatePost.bind(this)
   }
 
   componentDidMount(){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts.json`)
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts.json`)
     .then(response => {
       return response.json();
     })
@@ -23,7 +24,7 @@ class ListShowContainer extends Component {
   }
 
   addNewPost(formPayload){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts`, {
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts`, {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -44,21 +45,16 @@ class ListShowContainer extends Component {
     .then(responseData => {
       this.setState({ posts: [...this.state.posts, responseData] })
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch post: ${error.message}`));
   }
 
   handleDelete(id){
-    fetch(`/api/v1/boards/1/lists/${this.props.listID}/posts/${id}`, {
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
     })
     .then(response => {
       if (response.ok) {
-        let reload = 2
-        if (reload % 2 === 0) {
-          reload += 1
-          location.reload()
-        }
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`;
@@ -66,25 +62,60 @@ class ListShowContainer extends Component {
         throw(error);
       }
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .then(res => res.json())
+    // when working with response, do .json
+    .then(json => {
+      this.setState({ posts: json })
+    })
+    .catch(error => console.error(`Error in fetch delete: ${error.message}`));
+  }
+
+  updatePost(formPayload, id){
+    fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts/${id}`, {
+      method: 'PATCH',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      var newArr = this.state.posts.filter(post => {
+        return post.id !== responseData.posts.id
+      })
+      // newArr.sort() by rank when implemented
+      this.setState({ posts: [...newArr, responseData.posts] })
+    })
+    .catch(error => console.error(`Error in fetch patch: ${error.message}`))
   }
 
   render(){
     let posts = this.state.posts.map((post, index) => {
-
       return(
         <PostTile
           key = {index}
           postID = {post.id}
           body = {post.body}
+          votes = {post.votes}
           handleDelete = {this.handleDelete}
+          updatePost = {this.updatePost}
         />
       )
     })
 
     return(
       <div>
-        <h1 className="header">{this.props.title}</h1>
+        <h1 className="z">{this.props.title}</h1>
         <div className="row post-tile">
           {posts}
         </div>

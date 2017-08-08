@@ -4,8 +4,16 @@ import ReactDOM from 'react-dom';
 import App from '../src/App';
 
 document.addEventListener('DOMContentLoaded', function() {
+  let appDiv = document.getElementById('app');
+
+  let userID;
+
+  if(appDiv){
+    userID = appDiv.dataset.user_id
+  }
+
   ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+    <App userID={userID} />,
+    appDiv
   )
 })
