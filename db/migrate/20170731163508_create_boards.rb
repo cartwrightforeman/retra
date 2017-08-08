@@ -4,6 +4,7 @@ class CreateBoards < ActiveRecord::Migration[5.0]
       t.belongs_to :user
 
       t.string :name, null: false
+      t.timestamps
     end
   end
 end

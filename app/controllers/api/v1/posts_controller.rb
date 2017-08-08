@@ -13,12 +13,19 @@ class Api::V1::PostsController < ApplicationController
     @list = @board.lists.find(params[:list_id])
     @post = @list.posts.find(params[:id])
     post_hash = JSON.parse(request.body.read)["post"]
-    unless post_hash.has_key? "body"
-      return render json: { errors: 'Must have input!' }, status: 422
+    # unless post_hash.has_key? "body"
+    #   return render json: { errors: 'Must have input!' }, status: 422
+    # end
+    if post_hash.has_key? "body"
+      @post.assign_attributes({
+        body: post_hash["body"]
+      })
     end
-    @post.assign_attributes({
-      body: post_hash["body"]
-    })
+    if post_hash.has_key? "votes"
+      @post.assign_attributes({
+        votes: post_hash["votes"]
+      })
+    end
     if @post.save
       render json: { posts: @post }, adapter: :json
     end

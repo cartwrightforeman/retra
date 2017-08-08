@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-lists = ["Happy", "Meh", "Sad", "Discussion", "Action"]
+lists = ["Happy", "Meh", "Sad", "Action", "Discussion"]
 
 # if board requires user presence then use first user as seed
 User.create(uid: '8675309', name: 'super user', email: 'super@user.com')

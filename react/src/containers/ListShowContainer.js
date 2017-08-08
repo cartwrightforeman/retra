@@ -101,12 +101,12 @@ class ListShowContainer extends Component {
 
   render(){
     let posts = this.state.posts.map((post, index) => {
-
       return(
         <PostTile
           key = {index}
           postID = {post.id}
           body = {post.body}
+          votes = {post.votes}
           handleDelete = {this.handleDelete}
           updatePost = {this.updatePost}
         />

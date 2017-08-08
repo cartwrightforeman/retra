@@ -78,8 +78,16 @@ input.edit {
   padding-right: 10px;
 }
 
-.posty {
+.delete-button {
   float: right;
+}
+
+.vote-items {
+  float: left;
+}
+
+.votes::selection {
+  background: none;
 }
 
 .header {
