@@ -9,6 +9,7 @@ body {
 
 .top-bar .name h1 a {
   color: black;
+  font-family: 'Petrona', serif;
   font-size: 28px;
 }
 
@@ -18,11 +19,11 @@ body {
 }
 
 .list {
-  // background-color: red;
   background-color: #F9F9F9;
   // border: 3px solid #EEEEEE;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 45em;
+  // height: 51em;
   overflow: auto;
 }
 
@@ -33,26 +34,27 @@ body {
 
 .mini {
   height: 22.5em;
+  // height: 25.5em;
 }
 
 .class0 {
-  border-top: 5px solid green;
+  border-top: 5px solid #59a659;
 }
 
 .class1 {
-  border-top: 5px solid yellow;
+  border-top: 5px solid #CDD395;
 }
 
 .class2 {
-  border-top: 5px solid red;
+  border-top: 5px solid #b34d4d;
 }
 
 .class3 {
-  border-top: 5px solid blue;
+  border-top: 5px solid #A2C0E3;
 }
 
 .class4 {
-  border-top: 5px solid orange;
+  border-top: 5px solid #bf8c40;
 }
 
 .z {
@@ -103,13 +105,35 @@ input.edit {
 }
 
 .board-tile {
-  blackground-color: lightblue;
   margin: 5px;
+  text-align: center;
+  height: auto;
+  padding: 5px;
+  border: 1px solid #bfbfbf;
+  background-color: #F9F9F9;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.boards-header h1.boards {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+.board-form {
+  margin-top: 6px;
+  margin-left: 1.3rem;
+}
+
+.boards-section {
+  margin: auto;
+  padding-left: 5rem;
+  border-right: 1px solid gray;
 }
 
 i.fa.fa-times {
   color: darkgray;
 }
+
 
 .small-12.columns.post.panel:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

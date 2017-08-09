@@ -61,16 +61,19 @@ class BoardsIndexContainer extends Component {
     })
     return(
       <div>
-        <div className="row small-centered">
-          <h1>ALL ABOARD</h1>
+        <div className="row boards-header small-centered">
+          <h1 className="boards">Boards</h1>
         </div>
         <div className="row">
-          {boards}
-          &nbsp;
-
-          <BoardFormContainer
-            addNewBoard = {this.addNewBoard}
-          />
+          <div className="column boards-section small-6">
+            {boards}
+            &nbsp;
+          </div>
+          <div className="column small-6">
+            <BoardFormContainer
+              addNewBoard = {this.addNewBoard}
+            />
+          </div>
         </div>
       </div>
     )

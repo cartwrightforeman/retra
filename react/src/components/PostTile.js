@@ -40,7 +40,7 @@ class PostTile extends Component {
       body: this.state.body
     }}
     let id = this.props.postID
-    this.props.updatePost(formPayload, id);
+    this.props.updatePostText(formPayload, id);
     this.handleClearForm(event);
   }
 
@@ -49,7 +49,7 @@ class PostTile extends Component {
       votes: this.state.votes
     }}
     let id = this.props.postID
-    this.props.updatePost(formPayload, id);
+    this.props.updatePostVotes(formPayload, id);
     this.handleClearForm(event);
   }
 
@@ -75,12 +75,14 @@ class PostTile extends Component {
     }
   }
 
-
   toggleEdit() {
     this.setState({ editing: true })
   }
 
   render() {
+    console.log(this.props.votes)
+    console.log('^props vote')
+    console.log(this.state.votes)
     let post;
     if (this.state.editing) {
       post = (
