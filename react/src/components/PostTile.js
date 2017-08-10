@@ -87,12 +87,12 @@ class PostTile extends Component {
     } else {
       post = (
         <span>
-          <span className="vote-items">
-            <i className="fa fa-angle-up" onClick={this.handleUpvote} aria-hidden="true"></i>
-            <div className="votes">{this.props.votes}</div>
-            <i className="fa fa-angle-down" onClick={this.handleDownvote} aria-hidden="true"></i>
-          </span>
-          <span className="small-11 columns post panel">
+          <span className="small-11 post columns panel">
+            <span className="vote-items">
+              <i className="fa fa-angle-up" onClick={this.handleUpvote} aria-hidden="true"></i>
+              <div className="votes">{this.props.votes}</div>
+              <i className="fa fa-angle-down" onClick={this.handleDownvote} aria-hidden="true"></i>
+            </span>
             <span className="delete-button">
               <i className="fa fa-times" onClick={() => this.props.handleDelete(this.props.postID)} aria-hidden="true"></i>
             </span>

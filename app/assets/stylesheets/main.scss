@@ -81,19 +81,20 @@ input.edit {
   padding-right: 10px;
 }
 
-.post {
+.post div {
   // background-color: red;
   // border-left: none;
-  display: inline-block;
+  // display: inline-block;
 }
 
 .delete-button {
   float: right;
+  padding-left: 1px;
 }
 
 .vote-items {
   float: left;
-  padding-right: 5px;
+  padding-right: 3px;
 }
 
 .votes::selection {
