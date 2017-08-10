@@ -39,9 +39,8 @@ class BoardShowContainer extends Component {
       }
 
       return(
-        <div className={size + " list collapse small-11 small-centered medium-8 medium-centered large-uncentered large-3 column " + "class" + index }>
+        <div key = {index + 1} className={size + " list collapse small-11 small-centered medium-8 medium-centered large-uncentered large-3 column " + "class" + index }>
           <ListShowContainer
-            key = {index + 1}
             index = {index + 1}
             title = {list.title}
             listID = {list.id}

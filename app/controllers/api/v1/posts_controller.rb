@@ -5,8 +5,7 @@ class Api::V1::PostsController < ApplicationController
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @posts = @list.posts
-    @posts = @list.posts.order("id")
-    # binding.pry
+    @posts = @list.posts.order(votes: :desc, created_at: :asc)
     render json: { posts: @posts }, adapter: :json
   end
 
@@ -16,6 +15,7 @@ class Api::V1::PostsController < ApplicationController
     @post = @list.posts.find(params[:id])
     post_hash = JSON.parse(request.body.read)["post"]
     if post_hash.has_key? "body"
+      # binding.pry
       @post.assign_attributes({
         body: post_hash["body"]
       })
@@ -25,15 +25,10 @@ class Api::V1::PostsController < ApplicationController
         votes: post_hash["votes"]
       })
     end
-    # @posts = @list.posts.push(@post)
-    # @posts = @posts.order("id")
-    # binding.pry
-    # if @post.save
-    #   render json: { posts: @posts }, adapter: :json
-    # end
-
+    @posts = @list.posts.push(@post)
+    @posts = @posts.order(votes: :desc, created_at: :asc)
     if @post.save
-      render json: { posts: @post }, adapter: :json
+      render json: { posts: @posts }, adapter: :json
     end
   end
 

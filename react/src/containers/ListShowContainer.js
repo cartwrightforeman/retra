@@ -98,14 +98,7 @@ class ListShowContainer extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-      var newArr = this.state.posts.filter(post => {
-        return post.id !== responseData.posts.id
-      })
-      newArr = newArr.concat(responseData.posts)
-      newArr = newArr.sort(function(a,b) {
-        return a.votes - b.votes;
-      });
-      this.setState({ posts: newArr })
+      this.setState({ posts: responseData.posts })
     })
     .catch(error => console.error(`Error in fetch patch: ${error.message}`))
   }
@@ -130,21 +123,14 @@ class ListShowContainer extends Component {
     })
     .then(response => response.json())
     .then(responseData => {
-      var newArr = this.state.posts.filter(post => {
-        return post.id !== responseData.posts.id
-      })
-      newArr = newArr.concat(responseData.posts)
-      // newArr = newArr.sort(function(a,b) {
-      //   return a.votes - b.votes;
-      // });
-      this.setState({ posts: newArr })
+
+      this.setState({ posts: responseData.posts })
     })
     .catch(error => console.error(`Error in fetch patch: ${error.message}`))
   }
 
   render(){
     let posts = this.state.posts.map((post, index) => {
-      // debugger;
       return(
         <PostTile
           key = {index}

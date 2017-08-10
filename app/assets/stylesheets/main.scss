@@ -1,5 +1,6 @@
 body {
-  background-color: #EEEEEE;
+  // background-color: #EEEEEE;
+  background-image: url(https://cdn.suwalls.com/wallpapers/abstract/gray-blur-43938-1920x1200.jpg);
 }
 
 .top-bar {
@@ -80,12 +81,19 @@ input.edit {
   padding-right: 10px;
 }
 
+.post {
+  // background-color: red;
+  // border-left: none;
+  display: inline-block;
+}
+
 .delete-button {
   float: right;
 }
 
 .vote-items {
   float: left;
+  padding-right: 5px;
 }
 
 .votes::selection {
@@ -117,6 +125,7 @@ input.edit {
 .boards-header h1.boards {
   font-family: 'Lato', sans-serif;
   text-align: center;
+  color: #F9F9F9;
 }
 
 .board-form {

@@ -7,8 +7,7 @@ class PostTile extends Component {
     this.state = {
       editing: false,
       body: '',
-      votes: 0,
-      firstTime: true
+      votes: ''
     }
     this.toggleEdit = this.toggleEdit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -30,7 +29,8 @@ class PostTile extends Component {
     event.preventDefault();
     this.setState({
       editing: false,
-      body: ''
+      body: '',
+      votes: ''
     })
   }
 
@@ -55,24 +55,14 @@ class PostTile extends Component {
 
   handleUpvote(event) {
     event.preventDefault();
-    if (this.state.firstTime) {
-      let newUpvote = this.props.votes + 1
-      this.setState({ firstTime: false, votes: newUpvote }, this.prepareVotes )
-    } else {
-      let newUpvote = this.state.votes + 1
-      this.setState({ votes: newUpvote}, this.prepareVotes)
-    }
+    let newUpvote = this.props.votes + 1
+    this.setState({ votes: newUpvote}, this.prepareVotes)
   }
 
   handleDownvote(event) {
     event.preventDefault();
-    if (this.state.firstTime) {
-      let newDownvote = this.props.votes - 1
-      this.setState({ firstTime: false, votes: newDownvote }, this.prepareVotes )
-    } else {
-      let newDownvote = this.state.votes - 1
-      this.setState({ votes: newDownvote}, this.prepareVotes)
-    }
+    let newDownvote = this.props.votes - 1
+    this.setState({ votes: newDownvote}, this.prepareVotes)
   }
 
   toggleEdit() {
@@ -80,9 +70,6 @@ class PostTile extends Component {
   }
 
   render() {
-    console.log(this.props.votes)
-    console.log('^props vote')
-    console.log(this.state.votes)
     let post;
     if (this.state.editing) {
       post = (
@@ -99,16 +86,18 @@ class PostTile extends Component {
       )
     } else {
       post = (
-        <span className="small-12 columns post panel">
-        <span className="vote-items">
-          <i className="fa fa-angle-up" onClick={this.handleUpvote} aria-hidden="true"></i>
-          <div className="votes">{this.props.votes}</div>
-          <i className="fa fa-angle-down" onClick={this.handleDownvote} aria-hidden="true"></i>
-        </span>
-          <span className="delete-button">
-            <i className="fa fa-times" onClick={() => this.props.handleDelete(this.props.postID)} aria-hidden="true"></i>
+        <span>
+          <span className="vote-items">
+            <i className="fa fa-angle-up" onClick={this.handleUpvote} aria-hidden="true"></i>
+            <div className="votes">{this.props.votes}</div>
+            <i className="fa fa-angle-down" onClick={this.handleDownvote} aria-hidden="true"></i>
           </span>
-          <p className="post-text" onClick={this.toggleEdit}>{this.props.body}</p>
+          <span className="small-11 columns post panel">
+            <span className="delete-button">
+              <i className="fa fa-times" onClick={() => this.props.handleDelete(this.props.postID)} aria-hidden="true"></i>
+            </span>
+            <p className="post-text" onClick={this.toggleEdit}>{this.props.body}</p>
+          </span>
         </span>
       )
     }
