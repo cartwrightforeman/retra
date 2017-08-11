@@ -1,11 +1,14 @@
 import React from 'react';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const BoardTile = (props) => {
+const BoardTile = SortableElement((props) => {
+  let board = props.board
+  // debugger;
   return (
     <div className="board-tile small-5 column end">
-      <a href={'/boards/' + props.boardID}>{props.name}</a>
+      <a href={'/boards/' + board.id}><button>{board.name}</button></a><button onClick={props.handleClick}>Save change</button>
     </div>
   );
-}
+})
 
 export default BoardTile;
