@@ -5,6 +5,7 @@ class Api::V1::PostsController < ApplicationController
     @board = Board.find(params[:board_id])
     @list = @board.lists.find(params[:list_id])
     @posts = @list.posts
+    @posts = @list.posts.order(votes: :desc, updated_at: :asc)
     render json: { posts: @posts }, adapter: :json
   end
 
@@ -13,9 +14,6 @@ class Api::V1::PostsController < ApplicationController
     @list = @board.lists.find(params[:list_id])
     @post = @list.posts.find(params[:id])
     post_hash = JSON.parse(request.body.read)["post"]
-    # unless post_hash.has_key? "body"
-    #   return render json: { errors: 'Must have input!' }, status: 422
-    # end
     if post_hash.has_key? "body"
       @post.assign_attributes({
         body: post_hash["body"]
@@ -26,8 +24,10 @@ class Api::V1::PostsController < ApplicationController
         votes: post_hash["votes"]
       })
     end
+    @posts = @list.posts.push(@post)
+    @posts = @posts.order(votes: :desc, updated_at: :asc)
     if @post.save
-      render json: { posts: @post }, adapter: :json
+      render json: { posts: @posts }, adapter: :json
     end
   end
 
