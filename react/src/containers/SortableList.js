@@ -2,20 +2,14 @@ import React from 'react';
 import BoardTile from '../components/BoardTile';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const SortableList = SortableContainer(({boards, sendID}) => {
+const SortableList = SortableContainer(({boards}) => {
   let sortedBoards;
   sortedBoards = boards.map((value, index) => {
-    let handleClick = () => {
-      console.log("why won't handleclick work")
-      sendID(value.id);
-    }
-    // debugger;
     return(
       <BoardTile
         key={`item-${index}`}
         index={index}
         board={value}
-        handleClick={handleClick}
       />
     )
   })
@@ -28,3 +22,18 @@ const SortableList = SortableContainer(({boards, sendID}) => {
 });
 
 export default SortableList;
+
+
+// sortedBoards = boards.map((value, index) => {
+//   let handleClick = () => {
+//     sendID(value.id);
+//   }
+//   return(
+//     <BoardTile
+//       key={`item-${index}`}
+//       index={index}
+//       board={value}
+//       handleClick={handleClick}
+//     />
+//   )
+// })

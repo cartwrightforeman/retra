@@ -13,7 +13,6 @@ class BoardsIndexContainer extends Component {
     }
     this.onSortEnd = this.onSortEnd.bind(this);
     this.addNewBoard = this.addNewBoard.bind(this)
-    this.sendID = this.sendID.bind(this)
   }
 
   componentDidMount() {
@@ -58,12 +57,10 @@ class BoardsIndexContainer extends Component {
   updateBoardTiles(boards) {
     let data = {boards: boards};
     let jsonStringData = JSON.stringify(data);
-    // find a way to get ID!
-    debugger;
-    // let boardId = this.props.match.params.id;
-    fetch(`/api/v1/boards/${this.state.id}/`, {
+    fetch(`/api/v1/boards/1/`, {
       method: 'PATCH',
-      body: jsonStringData
+      body: jsonStringData,
+      credentials: "same-origin"
     })
     .then(response => {
       if (response.ok) {
@@ -80,19 +77,14 @@ class BoardsIndexContainer extends Component {
 
   onSortEnd({oldIndex, newIndex}) {
     this.setState({
-      blocks: arrayMove(this.state.boards, oldIndex, newIndex)
+      boards: arrayMove(this.state.boards, oldIndex, newIndex)
     });
     this.updateBoardTiles(this.state.boards)
   }
 
-  sendID(iD) {
-    console.log('sendID function')
-    this.setState({ id: iD})
-  }
-
   render() {
     console.log(this.state.id)
-    console.log(this.state.blocks)
+    console.log(this.state.boards)
     return(
       <div>
         <div className="row boards-header small-centered">
@@ -103,12 +95,12 @@ class BoardsIndexContainer extends Component {
           <SortableList
             boards={this.state.boards}
             onSortEnd={this.onSortEnd}
-            sendID={this.sendID}
           />
           </div>
           <div className="column small-6">
             <BoardFormContainer
               addNewBoard = {this.addNewBoard}
+              boards = {this.state.boards}
             />
           </div>
         </div>

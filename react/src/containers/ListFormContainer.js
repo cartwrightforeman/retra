@@ -45,6 +45,7 @@ class ListFormContainer extends Component {
             name="body"
             handleChange={this.handleChange}
             placeholder="Add Post"
+            maxLength="150"
           />
           <ul className="button-group clever-padding">
           </ul>

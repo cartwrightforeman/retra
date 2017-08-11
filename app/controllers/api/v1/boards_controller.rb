@@ -3,36 +3,26 @@ class Api::V1::BoardsController < ApplicationController
 
   def index
     @boards = Board.where(user_id: current_user.id)
+    @boards = @boards.order(location: :asc)
     render json: @boards, adapter: :json
   end
 
   def update
     data = JSON.parse(request.body.read)
-    binding.pry
-    key_check = data.keys
-    if key_check[0] == "blocks"
-      blocks = Song.find(params[:id]).blocks
-      blocks.each do |block|
-        data["blocks"].each_with_index do |d, i|
-          if d["id"] == block.id
-            new_location = (i + 1)
-            unless new_location == block.location
-              block.location = new_location
-              block.save
-            end
+    @boards = Board.where(user_id: current_user.id)
+    @boards.each do |board|
+      data["boards"].each_with_index do |data_board, i|
+        if data_board["id"] == board.id
+          new_location = (i + 1)
+          unless new_location == board.location
+            board.location = new_location
+            board.save
           end
         end
       end
-      song = Song.find(params[:id])
-      sorted_blocks = blocks.sort_by{|b| b["location"]}
-      render json: {song: song, blocks: sorted_blocks}
-    elsif key_check[0] == "song"
-      song = Song.find(params[:id])
-      song.name = data["song"]["name"]
-      song.description = data["song"]["description"]
-      song.save
-      render json: { message: "Updated Song" }
     end
+    sorted_boards = @boards.sort_by{|b| b["location"]}
+    render json: {boards: sorted_boards}
   end
 
   def show

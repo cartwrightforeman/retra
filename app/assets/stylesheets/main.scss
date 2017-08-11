@@ -77,14 +77,12 @@ input.edit {
 
 .post-tile {
   margin: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 9px;
 }
 
-.post div {
-  // background-color: red;
-  // border-left: none;
-  // display: inline-block;
+.post {
+  // margin-right: none;
 }
 
 .delete-button {
@@ -94,9 +92,8 @@ input.edit {
 
 .vote-items {
   float: left;
-  padding-right: 3px;
+  padding-right: 5px;
 }
-
 .votes::selection {
   background: none;
 }
@@ -116,7 +113,7 @@ input.edit {
 .board-tile {
   margin: 5px;
   text-align: center;
-  height: auto;
+  height: 4rem;
   padding: 5px;
   border: 1px solid #bfbfbf;
   background-color: #F9F9F9;
@@ -131,7 +128,17 @@ input.edit {
 
 .board-form {
   margin-top: 6px;
-  margin-left: 1.3rem;
+  margin-left: 1.8rem;
+}
+
+.board-button {
+  background-color: #F9F9F9;
+  color: #6295d0;
+}
+
+.board-button:hover {
+  background-color: #F9F9F9;
+  color: #356fb1;
 }
 
 .boards-section {
@@ -145,11 +152,11 @@ i.fa.fa-times {
 }
 
 
-.small-12.columns.post.panel:hover {
+.small-11.columns.post.panel:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.small-12.columns.post.panel:hover i.fa.fa-times {
+.small-11.columns.post.panel:hover i.fa.fa-times {
   color: dimgray;
   cursor: pointer; cursor: hand;
 }
