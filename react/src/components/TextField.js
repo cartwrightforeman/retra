@@ -8,6 +8,7 @@ const TextField = (props) => {
         type='text'
         value={props.content}
         placeholder= {props.placeholder}
+        maxLength={props.maxLength}
       />
     </label>
   );

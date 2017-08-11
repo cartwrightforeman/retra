@@ -5,7 +5,9 @@ class BoardFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: ''
+      name: '',
+      location: '',
+      boards: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
@@ -22,14 +24,16 @@ class BoardFormContainer extends Component {
   handleClearForm(event) {
     event.preventDefault();
     this.setState({
-      name: ''
+      name: '',
+      location: ''
     })
   }
 
   handleFormSubmit(event) {
     event.preventDefault();
     let formPayload = {board: {
-      name: this.state.name
+      name: this.state.name,
+      location: this.props.boards.length + 1
     }}
     this.props.addNewBoard(formPayload);
     this.handleClearForm(event);
@@ -44,6 +48,7 @@ class BoardFormContainer extends Component {
             name="name"
             handleChange={this.handleChange}
             placeholder= "New Board"
+            maxLength="25"
           />
         </form>
       </div>
