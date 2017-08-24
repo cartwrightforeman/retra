@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-// import BoardTile from '../components/BoardTile'
 import SortableList from '../containers/SortableList'
 import BoardFormContainer from '../containers/BoardFormContainer'
 
@@ -8,8 +7,7 @@ class BoardsIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      boards: [],
-      id: ''
+      boards: []
     }
     this.onSortEnd = this.onSortEnd.bind(this);
     this.addNewBoard = this.addNewBoard.bind(this)
@@ -83,8 +81,6 @@ class BoardsIndexContainer extends Component {
   }
 
   render() {
-    console.log(this.state.id)
-    console.log(this.state.boards)
     return(
       <div>
         <div className="row boards-header small-centered">
