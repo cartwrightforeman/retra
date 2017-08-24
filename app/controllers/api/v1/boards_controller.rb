@@ -10,18 +10,23 @@ class Api::V1::BoardsController < ApplicationController
   def update
     data = JSON.parse(request.body.read)
     @boards = Board.where(user_id: current_user.id)
+    # iterate through each board in database
     @boards.each do |board|
+      # iterate through data boards from fetch call
       data["boards"].each_with_index do |data_board, i|
+        # if the board id and returned info id are the same
         if data_board["id"] == board.id
+          # then assign new_location to the value of i + 1
           new_location = (i + 1)
           unless new_location == board.location
+            # if new_location and board location are different set board location to new location
             board.location = new_location
             board.save
           end
         end
       end
     end
-    sorted_boards = @boards.sort_by{|b| b["location"]}
+    sorted_boards = @boards.sort_by{ |board| board["location"] }
     render json: {boards: sorted_boards}
   end
 
@@ -29,9 +34,6 @@ class Api::V1::BoardsController < ApplicationController
     @board = Board.find(params[:id])
     if !current_user.nil? && current_user.id === @board.user_id
       render json: { board: @board }
-    end
-    if current_user == nil
-      render json: { errors: ["Oops! This isn't yours!"] }, status: 404
     end
   end
 

@@ -1,5 +1,4 @@
 body {
-  // background-color: #EEEEEE;
   background-image: url("https://cdn.suwalls.com/wallpapers/abstract/gray-blur-43938-1920x1200.jpg");
 }
 
@@ -21,10 +20,8 @@ body {
 
 .list {
   background-color: #F9F9F9;
-  // border: 3px solid #EEEEEE;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   height: 45em;
-  // height: 51em;
   overflow: auto;
 }
 
@@ -35,7 +32,6 @@ body {
 
 .mini {
   height: 22.5em;
-  // height: 25.5em;
 }
 
 .class0 {
@@ -58,14 +54,6 @@ body {
   border-top: 5px solid #bf8c40;
 }
 
-.z {
-  // use to change headers
-}
-
-input.edit {
-  // set cursor to blink after click
-}
-
 .profile-photo {
   height: 35px;
   width: 35px;
@@ -79,10 +67,6 @@ input.edit {
   margin: auto;
   padding-left: 15px;
   padding-right: 9px;
-}
-
-.post {
-  // margin-right: none;
 }
 
 .delete-button {
