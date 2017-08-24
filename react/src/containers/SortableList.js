@@ -22,18 +22,3 @@ const SortableList = SortableContainer(({boards}) => {
 });
 
 export default SortableList;
-
-
-// sortedBoards = boards.map((value, index) => {
-//   let handleClick = () => {
-//     sendID(value.id);
-//   }
-//   return(
-//     <BoardTile
-//       key={`item-${index}`}
-//       index={index}
-//       board={value}
-//       handleClick={handleClick}
-//     />
-//   )
-// })

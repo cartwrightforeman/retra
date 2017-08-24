@@ -17,5 +17,3 @@ class User < ApplicationRecord
     end
   end
 end
-
-# possible dependent destroy for new boards

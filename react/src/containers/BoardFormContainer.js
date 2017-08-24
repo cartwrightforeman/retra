@@ -6,8 +6,7 @@ class BoardFormContainer extends Component {
     super(props)
     this.state = {
       name: '',
-      location: '',
-      boards: []
+      location: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)

@@ -12,14 +12,7 @@ class ListShowContainer extends Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.updatePostText = this.updatePostText.bind(this)
     this.updatePostVotes = this.updatePostVotes.bind(this)
-    this.onSortEnd = this.onSortEnd.bind(this)
   }
-
-  onSortEnd({oldIndex, newIndex}) {
-    this.setState({
-      posts: arrayMove(this.state.posts, oldIndex, newIndex),
-    });
-  };
 
   componentDidMount(){
     fetch(`/api/v1/boards/${this.props.boardID}/lists/${this.props.listID}/posts.json`)
@@ -140,7 +133,6 @@ class ListShowContainer extends Component {
           handleDelete = {this.handleDelete}
           updatePostText = {this.updatePostText}
           updatePostVotes = {this.updatePostVotes}
-          onSortEnd = {this.onSortEnd}
         />
       )
     })

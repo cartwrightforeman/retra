@@ -47,8 +47,10 @@ class Api::V1::PostsController < ApplicationController
     @post = @list.posts.find(params[:id])
     @post.delete
     @list = @board.lists.find(params[:list_id])
+    @posts = @list.posts
+    @posts = @posts.order(votes: :desc, updated_at: :asc)
     if @post.delete
-      render json: @list.posts
+      render json: @posts
     end
   end
 end
