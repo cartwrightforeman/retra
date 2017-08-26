@@ -7,4 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # if board requires user presence then use first user as seed
-User.create(uid: '8675309', name: 'super user', email: 'super@user.com')
+User.create(uid: '8675309', email: 'super@user.com')

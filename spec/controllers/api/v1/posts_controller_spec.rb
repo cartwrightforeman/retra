@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ListsController, type: :controller do
   before(:each) do
-    @user = FactoryGirl.create(:user, name: 'Super User', uid: '12345', provider: "GitHub", email: 'super@user.com')
+    @user = FactoryGirl.create(:user, uid: '12345', provider: "GitHub", email: 'super@user.com')
     @board = FactoryGirl.create(:board, user: @user, id: '1', name: 'firstboard')
     @list = FactoryGirl.create(:list, title: 'title', board: @board)
     create(:post, list: @list, id: '1')
