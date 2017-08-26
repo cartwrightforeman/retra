@@ -131,6 +131,20 @@ body {
   border-right: 1px solid gray;
 }
 
+i.fa.fa-bars {
+  padding-left: 5px;
+  padding-top: 17px;
+  color: darkgray;
+  float: left;
+}
+
+i.fa.fa-bars:hover {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
 i.fa.fa-times {
   color: darkgray;
 }

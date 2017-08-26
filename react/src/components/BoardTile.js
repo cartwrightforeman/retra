@@ -5,7 +5,7 @@ const BoardTile = SortableElement((props) => {
   let board = props.board
   return (
     <div className="board-tile small-10 column end" >
-      <a href={'/boards/' + board.id}><button className="board-button round button">{board.name}</button></a>
+      <i className="fa fa-bars" aria-hidden="true"></i><a href={'/boards/' + board.id}><button className="board-button round button">{board.name}</button></a>
     </div>
   );
 })
