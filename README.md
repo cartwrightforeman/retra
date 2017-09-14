@@ -29,4 +29,4 @@ Retra was developed as part of the Breakable Toy weeks at Launch Academy.
 * In another tab, `npm start`
 * Navigate to `localhost:3000`
 #### Tests
-In order to run the test suite, run `rake` to run the backend tests. Run `karma start` and navigate to `localhost:9876` to run the frontend tests.
+For backend tests run `rake`. For frontend tests run `karma start` and navigate to `localhost:9876`.
